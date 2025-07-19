@@ -1,6 +1,6 @@
 import sqlite3 from 'sqlite3';
 
-const DB_PATH = './server/travel.db';
+const DB_PATH = './travel.db';
 
 const db = new sqlite3.Database(DB_PATH, (err) => {
   if (err) {
