@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8031:8031"
+      - "8032:8032"
+    environment:
+      - PORT=8032
