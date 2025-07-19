@@ -20,6 +20,7 @@ WORKDIR /app
 RUN apk add --no-cache nginx
 
 # Copy server files
+COPY package.json ./
 COPY server/ ./
 
 # Copy frontend build from the build stage
