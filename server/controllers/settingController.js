@@ -1,14 +1,16 @@
 import Setting from '../models/setting.js';
+import logger from '../middleware/logger.js';
 
 const settingController = {
   getSetting: (req, res) => {
     const { key } = req.params;
     Setting.get(key, (err, row) => {
       if (err) {
-        res.status(400).json({ "error": err.message });
+        logger.error("Error getting setting:", err.message);
+        res.error(err.message, 400);
         return;
       }
-      res.json({ key, value: row ? row.value : null });
+      res.success({ key, value: row ? row.value : null });
     });
   },
 
@@ -17,15 +19,11 @@ const settingController = {
     const { value } = req.body;
     Setting.set(key, value, function (err) {
       if (err) {
-        res.status(400).json({ "error": err.message });
+        logger.error("Error setting setting:", err.message);
+        res.error(err.message, 400);
         return;
       }
-      res.json({
-        message: 'success',
-        key,
-        value,
-        changes: this.changes
-      });
+      res.success({ key, value }, 'Setting updated successfully');
     });
   },
 };

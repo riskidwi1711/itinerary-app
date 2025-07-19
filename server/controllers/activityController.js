@@ -1,17 +1,19 @@
 import Activity from '../models/activity.js';
+import logger from '../middleware/logger.js';
 
 const activityController = {
   getAllActivities: (req, res) => {
     Activity.getAll((err, rows) => {
       if (err) {
-        res.status(400).json({ "error": err.message });
+        logger.error("Error getting all activities:", err.message);
+        res.error(err.message, 400);
         return;
       }
       const activities = rows.map(row => ({
         ...row,
         statusPembayaran: row.statusPembayaran === 1 ? true : false
       }));
-      res.json(activities);
+      res.success(activities);
     });
   },
 
@@ -19,14 +21,11 @@ const activityController = {
     const activity = req.body;
     Activity.create(activity, function (err) {
       if (err) {
-        res.status(400).json({ "error": err.message });
+        logger.error("Error creating activity:", err.message);
+        res.error(err.message, 400);
         return;
       }
-      res.json({
-        message: 'success',
-        data: activity,
-        id: this.lastID
-      });
+      res.success(activity, 'Activity created successfully', 201);
     });
   },
 
@@ -35,14 +34,11 @@ const activityController = {
     const activity = req.body;
     Activity.update(id, activity, function (err) {
       if (err) {
-        res.status(400).json({ "error": err.message });
+        logger.error("Error updating activity:", err.message);
+        res.error(err.message, 400);
         return;
       }
-      res.json({
-        message: 'success',
-        data: activity,
-        changes: this.changes
-      });
+      res.success(activity, 'Activity updated successfully');
     });
   },
 
@@ -50,13 +46,11 @@ const activityController = {
     const { id } = req.params;
     Activity.delete(id, function (err) {
       if (err) {
-        res.status(400).json({ "error": err.message });
+        logger.error("Error deleting activity:", err.message);
+        res.error(err.message, 400);
         return;
       }
-      res.json({
-        message: 'deleted',
-        changes: this.changes
-      });
+      res.success(null, 'Activity deleted successfully');
     });
   },
 };

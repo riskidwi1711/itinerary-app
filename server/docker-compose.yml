@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  server:
+    build: .
+    ports:
+      - "3110:3002"
+    environment:
+      NODE_ENV: development
+      PORT: 3002

@@ -1,12 +1,13 @@
 import sqlite3 from 'sqlite3';
+import logger from '../middleware/logger.js';
 
 const DB_PATH = './travel.db';
 
 const db = new sqlite3.Database(DB_PATH, (err) => {
   if (err) {
-    console.error('Error connecting to database:', err.message);
+    logger.error('Error connecting to database:', err.message);
   } else {
-    console.log('Connected to the SQLite database.');
+    logger.info('Connected to the SQLite database.');
     db.run(`
       CREATE TABLE IF NOT EXISTS activities (
         id TEXT PRIMARY KEY,
@@ -24,9 +25,9 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
       )
     `, (err) => {
       if (err) {
-        console.error('Error creating activities table:', err.message);
+        logger.error('Error creating activities table:', err.message);
       } else {
-        console.log('Activities table created or already exists.');
+        logger.info('Activities table created or already exists.');
       }
     });
 
@@ -37,9 +38,9 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
       )
     `, (err) => {
       if (err) {
-        console.error('Error creating settings table:', err.message);
+        logger.error('Error creating settings table:', err.message);
       } else {
-        console.log('Settings table created or already exists.');
+        logger.info('Settings table created or already exists.');
       }
     });
   }
