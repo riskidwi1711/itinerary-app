@@ -1,20 +1,9 @@
 services:
-  frontend:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
-    depends_on:
-      - backend
-    container_name: itinerary-app-frontend
-
-  backend:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    ports:
       - "3000:3000"
-    container_name: itinerary-app-backend
-    environment:
-      - PORT=3000
+    container_name: itinerary-app
