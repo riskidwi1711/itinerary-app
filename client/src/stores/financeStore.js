@@ -32,9 +32,9 @@ export const useFinanceStore = create((set, get) => ({
       ]);
       set({
         initialBalances: {
-          SGD: parseFloat(sgd.data.value) || 0,
-          MYR: parseFloat(myr.data.value) || 0,
-          IDR: parseFloat(idr.data.value) || 0,
+          SGD: parseFloat(sgd.data.data.value) || 0,
+          MYR: parseFloat(myr.data.data.value) || 0,
+          IDR: parseFloat(idr.data.data.value) || 0,
         }
       });
     } catch (error) {
