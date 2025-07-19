@@ -1,5 +1,7 @@
 # Dependencies
 /node_modules
+/server/node_modules
+/client/node_modules
 
 # Logs
 npm-debug.log*
@@ -26,9 +28,6 @@ lerna-debug.log*
 # Operating System files
 .DS_Store
 Thumbs.db
-
-# SQLite database
-/server/travel.db
 
 # Bun lockfile
 bun.lockb
