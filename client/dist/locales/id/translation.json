@@ -103,8 +103,13 @@
   "noActivitiesForDateRange": "Tidak ada kegiatan untuk rentang tanggal ini.",
   "useAddActivityButton": "Gunakan tombol \"Tambah Kegiatan Baru\" untuk mulai merencanakan!",
   "toggleTheme": "Ganti Tema",
+  "unpaid": "Belum Dibayar",
+  "free": "Gratis",
   "tripSummary": "Ringkasan Perjalanan",
   "totalSpent": "Total Pengeluaran",
   "activities": "Kegiatan",
-  "daysLeft": "Sisa Hari"
+  "daysLeft": "Sisa Hari",
+  "selectDateRange": "Pilih Rentang Tanggal",
+  "switchToTimelineView": "Beralih ke Tampilan Linimasa",
+  "switchToListView": "Beralih ke Tampilan Daftar"
 }

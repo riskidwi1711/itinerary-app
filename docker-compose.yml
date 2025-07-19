@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3111:80"
+    depends_on:
+      - server
+    networks:
+      - app-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3110:3002"
+    volumes:
+      - ./server/travel.db:/app/travel.db
+    networks:
+      - app-network
+    environment:
+      NODE_ENV: development
+      PORT: 3002
+
+networks:
+  app-network:
+    driver: bridge
