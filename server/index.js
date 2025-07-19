@@ -9,7 +9,7 @@ import responseMiddleware from './middleware/responseMiddleware.js';
 import errorMiddleware from './middleware/errorMiddleware.js';
 
 const app = express();
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3110;
 
 app.use(cors());
 app.use(express.json());
