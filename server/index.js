@@ -3,7 +3,7 @@ import cors from 'cors';
 import db from './config/db.js'; // Initialize database
 
 import activityRoutes from './routes/activityRoutes.js';
-const settingRoutes = require('./routes/settingRoutes');
+import settingRoutes from './routes/settingRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;

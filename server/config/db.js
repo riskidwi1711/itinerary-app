@@ -45,4 +45,4 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
   }
 });
 
-module.exports = db;
+export default db;

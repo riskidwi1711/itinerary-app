@@ -58,4 +58,4 @@ const Activity = {
   },
 };
 
-module.exports = Activity;
+export default Activity;
