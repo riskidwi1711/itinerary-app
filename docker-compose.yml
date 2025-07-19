@@ -5,6 +5,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+    container_name: itinerary-client
     ports:
       - "3111:80"
     depends_on:
@@ -16,10 +17,9 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    ports:
-      - "3110:3002"
+    container_name: itinerary-server
     volumes:
-      - ./server/travel.db:/app/travel.db
+      - ./client:/app/data
     networks:
       - app-network
     environment:

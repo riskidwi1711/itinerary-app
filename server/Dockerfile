@@ -12,7 +12,5 @@ RUN bun install
 
 COPY . .
 
-EXPOSE 3002
-
 # Use Bun to run the server
 CMD ["bun", "run", "server"]

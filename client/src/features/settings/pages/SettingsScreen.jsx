@@ -200,20 +200,6 @@ const SettingsScreen = () => {
             </motion.div>
           )}
         </form>
-
-        <AnimatePresence>
-          {showSaveSuccess && (
-            <motion.div
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              className="fixed top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-full shadow-lg flex items-center space-x-2 z-50"
-            >
-              <CheckCircle className="h-5 w-5" />
-              <span>{t('settingsSavedSuccessfully')}</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.div>
     </div>
   );
