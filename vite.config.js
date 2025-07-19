@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import commonjs from '@rollup/plugin-commonjs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,5 +13,8 @@ export default defineConfig({
       '@src': path.resolve(__dirname, './src'),
     },
   },
-  plugins: [react()],
+  plugins: [react(), commonjs()],
+  optimizeDeps: {
+    include: ['react-datepicker', 'react-quill', 'react-slick', 'slick-carousel', 'isomorphic-fetch'],
+  },
 });

@@ -1,10 +1,20 @@
-version: '3.8'
 services:
-  app:
-    build: .
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "8031:8031"
-      - "8032:8032"
-    container_name: itinerary-app
+      - "5173:5173"
+    depends_on:
+      - backend
+    container_name: itinerary-app-frontend
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    container_name: itinerary-app-backend
     environment:
-      - PORT=8032
+      - PORT=3000

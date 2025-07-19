@@ -48,7 +48,7 @@ export const useItineraryStore = create((set, get) => ({
     set({ isLoading: true, error: null });
     try {
       const res = await api.get('/itinerary');
-      const activities = res.data;
+      const activities = Array.isArray(res.data) ? res.data : [];
       set({ allItineraryActivities: activities, isLoading: false });
       get().filterItinerary();
     } catch (error) {
