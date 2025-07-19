@@ -30,4 +30,4 @@ const settingController = {
   },
 };
 
-export default settingController;
+module.exports = settingController;

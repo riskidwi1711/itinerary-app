@@ -61,4 +61,4 @@ const activityController = {
   },
 };
 
-export default activityController;
+module.exports = activityController;

@@ -5,4 +5,4 @@ import settingController from '../controllers/settingController.js';
 router.get('/:key', settingController.getSetting);
 router.post('/:key', settingController.setSetting);
 
-export default router;
+module.exports = router;

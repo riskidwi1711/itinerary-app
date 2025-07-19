@@ -7,4 +7,4 @@ router.post('/', activityController.createActivity);
 router.put('/:id', activityController.updateActivity);
 router.delete('/:id', activityController.deleteActivity);
 
-export default router;
+module.exports = router;

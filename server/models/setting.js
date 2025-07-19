@@ -14,4 +14,4 @@ const Setting = {
   },
 };
 
-export default Setting;
+module.exports = Setting;
