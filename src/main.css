@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom pattern for cards */
+.bg-pattern {
+  background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.1" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zM6 5v1H5z"/%3E%3C/g%3E%3C/svg%3E');
+}
+
+.banner-image {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.banner-image.fade-out {
+  opacity: 0;
+}
+
+.banner-image.fade-in {
+  opacity: 1;
+}
+
+
+@media screen and (min-width: 413px) {
+
+  .bottom-nav {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+  }
+
+  .app-header {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+  }
+}
+
+/* Custom animations for modal */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Specific input focus styles */
+.form-input:focus {
+    transform: translateY(-1px);
+}
+
+/* Validation styles */
+.form-input.invalid {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+/* React Datepicker full width */
+.react-datepicker {
+  width: 100%;
+}
+
+.react-datepicker__month-container {
+  width: 100%;
+}
+
+.react-datepicker__month {
+  width: 100%;
+}
+
+.react-datepicker__week {
+  display: flex;
+  justify-content: space-around;
+}
+
+.react-datepicker__day-names {
+  display: flex;
+  justify-content: space-around;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  flex-grow: 1;
+  text-align: center;
+}
