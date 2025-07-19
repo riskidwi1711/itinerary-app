@@ -21,6 +21,8 @@ RUN apk add --no-cache nginx
 
 # Copy server files
 COPY package.json ./
+RUN npm install
+
 COPY server/ ./
 
 # Copy frontend build from the build stage
