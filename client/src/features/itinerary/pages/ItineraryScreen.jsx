@@ -10,7 +10,6 @@ import useItinerary from '../hooks/useItinerary.jsx';
 import { useGlobalUI } from '@src/hooks/useGlobalUI.js';
 import ItinerarySkeleton from '@src/features/common/components/ItinerarySkeleton.jsx';
 import { useFinance } from '@src/features/finance/hooks/useFinance.js';
-import PullToRefresh from 'react-pull-to-refresh';
 
 const ItineraryScreen = () => {
   const { t } = useTranslation();
@@ -125,12 +124,7 @@ const ItineraryScreen = () => {
 
   return (
     <div className="min-h-screen">
-      <PullToRefresh
-        onRefresh={handleRefresh}
-        pullingContent={<div className="text-gray-500 text-sm py-2">Pull to refresh...</div>}
-        refreshingContent={<div className="text-blue-500 text-sm py-2">Refreshing...</div>}
-      >
-        <motion.div
+      <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -255,7 +249,6 @@ const ItineraryScreen = () => {
           </div>
 
         </motion.div>
-      </PullToRefresh>
     </div>
   );
 };
