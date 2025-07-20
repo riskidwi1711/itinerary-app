@@ -36,6 +36,7 @@ export const useItineraryStore = create((set, get) => ({
   endDate: "2025-07-28",
   isLoading: false,
   error: null,
+  isLocked: false, // New state for inactivity lock
 
   // Actions
   setStartDate: (startDate) => set({ startDate }),
@@ -43,6 +44,7 @@ export const useItineraryStore = create((set, get) => ({
     set({ endDate });
     get().filterItinerary();
   },
+  setIsLocked: (isLocked) => set({ isLocked }), // New action to set lock state
 
   fetchItineraryActivities: async () => {
     set({ isLoading: true, error: null });

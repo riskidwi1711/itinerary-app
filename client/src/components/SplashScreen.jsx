@@ -1,38 +1,27 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { MapPin } from 'lucide-react';
 
 const SplashScreen = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white z-[9999]"
-    >
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-6xl font-bold mb-4"
-      >
-        Itinerary App
-      </motion.div>
-      <motion.p
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-        className="text-xl"
-      >
-        Loading your adventure...
-      </motion.p>
-      <motion.div
-        initial={{ width: 0 }}
-        animate={{ width: "100px" }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        className="h-1 bg-white rounded-full mt-8"
-      />
-    </motion.div>
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-[9999]">
+      {/* Simple icon */}
+      <div className="mb-6">
+        <div className="w-20 h-20 bg-blue-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+          <MapPin size={32} className="text-white" />
+        </div>
+      </div>
+      
+      {/* App name */}
+      <h1 className="text-4xl font-bold text-gray-900 mb-2">Itinerary</h1>
+      <p className="text-gray-600 mb-8">Your travel companion</p>
+      
+      {/* Loading dots */}
+      <div className="flex space-x-1">
+        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+      </div>
+    </div>
   );
 };
 

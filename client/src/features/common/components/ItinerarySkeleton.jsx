@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const ItinerarySkeleton = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto bg-white/60 backdrop-blur-lg rounded-3xl shadow-xl p-6 sm:p-8 space-y-8 border border-white border-opacity-80"
+        className="max-w-4xl mx-auto "
       >
         {/* Header Skeleton */}
         <div className="h-10 bg-gray-300 rounded-lg w-3/4 mb-6 animate-pulse"></div>

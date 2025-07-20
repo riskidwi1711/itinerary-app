@@ -3,6 +3,9 @@ import cors from 'cors';
 
 import activityRoutes from './routes/activityRoutes.js';
 import settingRoutes from './routes/settingRoutes.js';
+import authRoutes from './routes/authRoutes.js'; // Import authRoutes
+import authMiddleware from './middleware/authMiddleware.js';
+import { verifyPin } from './controllers/pinController.js'; // Import verifyPin directly
 
 import logger, {errorLogger, requestLogger } from './middleware/logger.js';
 import responseMiddleware from './middleware/responseMiddleware.js';
@@ -17,8 +20,13 @@ app.use(express.json());
 app.use(requestLogger)
 app.use(responseMiddleware);
 
-app.use('/api/itinerary', activityRoutes);
-app.use('/api/settings', settingRoutes);
+// Public route for PIN verification (no authMiddleware)
+app.post('/api/verify-pin', verifyPin);
+
+// Apply authMiddleware to protected routes
+app.use('/api/itinerary', authMiddleware, activityRoutes);
+app.use('/api/settings', authMiddleware, settingRoutes);
+app.use('/api', authMiddleware, authRoutes); // authRoutes (excluding verify-pin) requires authMiddleware
 
 app.use(errorLogger);
 app.use(errorMiddleware);

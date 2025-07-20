@@ -7,7 +7,10 @@ import GlobalLoading from '@src/components/GlobalLoading.jsx';
 import Toast from '@src/components/ui/Toast.jsx';
 import { useUIStore } from '@src/stores/uiStore.js';
 import { useSettingsStore } from '@src/stores/settingsStore.js';
+import { useItineraryStore } from '@src/stores/itineraryStore.js';
+import { useInactivity } from './hooks/useInactivity';
 import {BottomNav, Header, ConfirmModal, ActorSelectionModalContent} from '@src/features/common/components/index.js'
+import PullToRefresh from 'react-pull-to-refresh'; // Import PullToRefresh
 
 import PinEntry from '@src/components/PinEntry';
 
@@ -29,15 +32,30 @@ function App() {
   } = useUIStore();
   
   const { selectedActor, setSelectedActor } = useSettingsStore();
+  const { isLocked, setIsLocked, fetchItineraryActivities, isLoading } = useItineraryStore(); // Get fetchItineraryActivities and isLoading
 
-  if (!selectedActor) {
-    return <PinEntry onPinVerified={setSelectedActor} />;
+  useInactivity();
+
+  const showPinEntry = !selectedActor || isLocked;
+
+  const handleRefresh = async () => {
+    // Only refresh if not already loading
+    if (!isLoading) {
+      await fetchItineraryActivities();
+    }
+  };
+
+  if (showPinEntry) {
+    return <PinEntry onPinVerified={(actorName) => {
+      setSelectedActor(actorName);
+      setIsLocked(false);
+    }} />;
   }
 
   const currentScreen = location.pathname.substring(1) || 'itinerary';
 
   return (
-    <div className="flex justify-center items-start min-h-screen bg-gray-300 app-container">
+    <div className="flex justify-center items-start min-h-screen  bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 app-container">
       <div className="flex flex-col w-full font-inter mobile:mx-auto">
         <Header
           currentScreen={currentScreen} 
@@ -55,9 +73,13 @@ function App() {
           )}
         />
 
-        <main className="flex-1 overflow-y-auto pt-24 pb-36 min-h-screen px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-          <AppRoutes />
-        </main>
+        <PullToRefresh
+          onRefresh={handleRefresh}
+        >
+          <main className="flex-1 overflow-y-auto pt-24 pb-36 min-h-screen px-4">
+            <AppRoutes />
+          </main>
+        </PullToRefresh>
 
         <BottomNav currentScreen={currentScreen} />
 

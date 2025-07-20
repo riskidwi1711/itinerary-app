@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "server": "kill-port 3005 && nodemon index.js"
+    "server": "kill-port 3110 && nodemon index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -15,7 +15,8 @@
     "sqlite3": "^5.1.7",
     "uuid": "^11.1.0",
     "winston": "^3.17.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "bcrypt": "^5.1.1"
   },
   "devDependencies": {
     "@types/node": "^22.5.5",

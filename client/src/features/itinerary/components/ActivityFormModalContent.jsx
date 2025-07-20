@@ -146,8 +146,21 @@ const ActivityFormModalContent = () => {
             </label>
             <Input id="attachment" name="attachment" type="file" className="sr-only" onChange={handleImageChange} />
             <div className="flex items-center mt-4">
-              <Input type="checkbox" id="statusPembayaran" name="statusPembayaran" checked={formItem.statusPembayaran} onChange={handleInputChange} className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
-              <label htmlFor="statusPembayaran" className="ml-2 block text-sm text-gray-900">{t('paymentStatus')}</label>
+              <label htmlFor="statusPembayaran" className="inline-flex items-center cursor-pointer">
+                <span className="mr-3 text-sm text-gray-900">{t('paymentStatus')}</span>
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    id="statusPembayaran"
+                    name="statusPembayaran"
+                    checked={formItem.statusPembayaran}
+                    onChange={handleInputChange}
+                    className="sr-only peer"
+                  />
+                  <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-200"></div>
+                  <div className="absolute top-0.5 left-0.5 bg-white w-5 h-5 rounded-full shadow-md transform peer-checked:translate-x-full transition-transform duration-200"></div>
+                </div>
+              </label>
             </div>
           </div>
         )}
@@ -158,7 +171,7 @@ const ActivityFormModalContent = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Stepper currentStep={currentStep} totalSteps={3} />
-      
+
       <div className="min-h-[200px]">
         {renderStepContent()}
       </div>
